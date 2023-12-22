@@ -1,0 +1,67 @@
+{
+  "playlists": [
+    {
+      "name": "Alfa Bravo Charlie",
+      "lastModifiedDate": "2023-12-05",
+      "items": [
+        {
+          "track": {
+            "trackName": "It's Alright",
+            "artistName": "Fractures",
+            "albumName": "Fractures",
+            "trackUri": "spotify:track:6yGbXzjKMIulJgmZvcuV3t"
+          },
+          "episode": null,
+          "localTrack": null,
+          "addedDate": "2017-02-10"
+        },
+        {
+          "track": {
+            "trackName": "Fallaway (feat. Emilíana Torrini)",
+            "artistName": "Kid Koala",
+            "albumName": "Music to Draw To: Satellite",
+            "trackUri": "spotify:track:7y9oBYhdZi3KcKNg9otJKf"
+          },
+          "episode": null,
+          "localTrack": null,
+          "addedDate": "2017-02-11"
+        },
+        {
+          "track": {
+            "trackName": "Through The Dark",
+            "artistName": "Alexi Murdoch",
+            "albumName": "Towards The Sun",
+            "trackUri": "spotify:track:77VbVdioYUjZI49WEMPc0c"
+          },
+          "episode": null,
+          "localTrack": null,
+          "addedDate": "2017-02-13"
+        },
+        {
+          "track": {
+            "trackName": "Kangaru",
+            "artistName": "Jóhann Jóhannsson",
+            "albumName": "Arrival",
+            "trackUri": "spotify:track:5Uoa2uh62TtDR1fLmVXJyW"
+          },
+          "episode": null,
+          "localTrack": null,
+          "addedDate": "2017-02-24"
+        },
+        {
+          "track": {
+            "trackName": "Into Dust",
+            "artistName": "Mazzy Star",
+            "albumName": "So Tonight That I Might See",
+            "trackUri": "spotify:track:7l5nkTZpoD93OkynN0gcon"
+          },
+          "episode": null,
+          "localTrack": null,
+          "addedDate": "2017-03-10"
+        }
+      ],
+      "description": null,
+      "numberOfFollowers": 1
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "tracks": [
+    {
+      "artist": "John Boutté",
+      "album": "Jambalaya",
+      "track": "Treme Song",
+      "uri": "spotify:track:3SQ5xQgBSC13MvSQulomua"
+    },
+    {
+      "artist": "Cookin' On 3 Burners",
+      "album": "Lab Experiments: Mixin', Vol. 1",
+      "track": "Sweet Talker",
+      "uri": "spotify:track:24mKvnoiiATFcxJI1f3Ys7"
+    },
+    {
+      "artist": "Red Hot Chili Peppers",
+      "album": "Blood Sugar Sex Magik",
+      "track": "Breaking the Girl",
+      "uri": "spotify:track:6Va1qwqV4lEvbOyPqodbth"
+    },
+    {
+      "artist": "Maceo Parker",
+      "album": "Southern Exposure",
+      "track": "Walking Home Together",
+      "uri": "spotify:track:5gxLWoPCFbyakTmzm5mtxj"
+    },
+    {
+      "artist": "The Meters",
+      "album": "Rejuvenation",
+      "track": "Just Kissed My Baby",
+      "uri": "spotify:track:1TB0dZqFRQsnf4fLLLRKQV"
+    },
+    {
+      "artist": "Soopasoul",
+      "album": "Twin Stix",
+      "track": "A Wild Mad Beat",
+      "uri": "spotify:track:29I7D2f26kLb4n4XEQwYKb"
+    },
+    {
+      "artist": "R.E.M.",
+      "album": "Out Of Time",
+      "track": "Belong",
+      "uri": "spotify:track:2wOyPDZOKhzebwrxKyGVZk"
+    }
+  ],
+  "albums": [
+    {
+      "artist": "The Orb",
+      "album": "Golden Clouds",
+      "uri": "spotify:album:1hpdVoXsIlTrTQr43JMU7K"
+    },
+    {
+      "artist": "Yeah Yeah Yeahs",
+      "album": "Sacrilege",
+      "uri": "spotify:album:2gbmItnLfokYlYyympYnZ1"
+    },
+    {
+      "artist": "Heiruspecs",
+      "album": "Small Steps",
+      "uri": "spotify:album:1fJXZGSlpsXrYp8DRjE59t"
+    }
+  ],
+  "shows": [],
+  "episodes": [],
+  "bannedTracks": [],
+  "artists": [
+    {
+      "name": "Anders Osborne",
+      "uri": "spotify:artist:3WUUtA45g7X0jbeywZz888"
+    },
+    {
+      "name": "Atmosphere",
+      "uri": "spotify:artist:1GAS0rb4L8VTPvizAx2O9J"
+    },
+    {
+      "name": "Beck",
+      "uri": "spotify:artist:3vbKDsSS70ZX9D2OcvbZmS"
+    },
+    {
+      "name": "Black Moth Super Rainbow",
+      "uri": "spotify:artist:4UHzJP2iKVf0RhKIv7ZE2l"
+    }
+  ],
+  "bannedArtists": [],
+  "other": [
+    "spotify:local:The+Meters:The+original+funkmasters:Cissy+strut:182",
+    "spotify:local:Charles+Mingus:Priceless+Jazz+Collection:Ii+B.S.:289",
+    "spotify:local:The+Crimea:SXSW+2005+Showcasing+Artist:Lottery+Winners+On+Acid:218"
+  ]
+}

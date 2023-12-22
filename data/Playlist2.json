@@ -1,0 +1,34 @@
+{
+  "playlists": [
+    {
+      "name": "Liked from Radio",
+      "lastModifiedDate": "2020-10-12",
+      "items": [
+        {
+          "track": {
+            "trackName": "Love Shack",
+            "artistName": "The B-52's",
+            "albumName": "Cosmic Thing",
+            "trackUri": "spotify:track:4W4wYHtsrgDiivRASVOINL"
+          },
+          "episode": null,
+          "localTrack": null,
+          "addedDate": "2019-12-24"
+        },
+        {
+          "track": {
+            "trackName": "Magic Dance",
+            "artistName": "David Bowie",
+            "albumName": "Labyrinth",
+            "trackUri": "spotify:track:4EHZ571PqEo5hH4HSegSA3"
+          },
+          "episode": null,
+          "localTrack": null,
+          "addedDate": "2019-11-28"
+        }
+      ],
+      "description": null,
+      "numberOfFollowers": 0
+    }
+  ]
+}
