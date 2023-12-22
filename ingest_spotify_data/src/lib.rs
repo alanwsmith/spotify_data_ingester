@@ -1,7 +1,7 @@
-pub mod library;
+pub mod spotify_library;
 pub mod track;
 
-use crate::library::Library;
+use crate::spotify_library::SpotifyLibrary;
 use crate::track::Track;
 use glob::glob;
 use rusqlite::{Connection, Result};
@@ -26,13 +26,14 @@ fn load_library_tracks(conn: &Connection) -> Result<()> {
             Ok(path) => {
                 dbg!(&path);
                 match fs::read_to_string(path) {
-                    Ok(raw) => match serde_json::from_str::<Library>(raw.as_str()) {
+                    Ok(raw) => match serde_json::from_str::<SpotifyLibrary>(raw.as_str()) {
                         Ok(data) => {
                             data.tracks.into_iter().for_each(|t| {
+                                let track_id = &t.uri.split(":").collect::<Vec<&str>>()[2];
                                 conn.execute(
-                                    "INSERT INTO library_tracks (artist, album, track, uri) VALUES (?1, ?2, ?3, ?4)",
-                                    (t.artist, t.album, t.track, t.uri),
-                                ).ok();
+                                    "INSERT INTO library_tracks (artist, album, track, uri, id) VALUES (?1, ?2, ?3, ?4, ?5)",
+                                    (t.artist, t.album, t.track, &t.uri, track_id),
+                                ).expect("Could not insert library track row");
                                 ()
                             });
                         }
@@ -61,7 +62,7 @@ fn load_stream_history(conn: &Connection) -> Result<()> {
                                 conn.execute(
                                     "INSERT INTO stream_history (artist, track, end_time, ms_played) VALUES (?1, ?2, ?3, ?4)",
                                     (d.artistName, d.trackName, d.endTime, d.msPlayed),
-                                ).ok();
+                                ).expect("Could not insert stream history row");
                                 ()
                             });
                         }
@@ -78,13 +79,11 @@ fn load_stream_history(conn: &Connection) -> Result<()> {
 
 fn make_tables(conn: &Connection) -> Result<()> {
     conn.execute("DROP TABLE IF EXISTS library_tracks", ())?;
-    conn.execute("DROP TABLE IF EXISTS marquee", ())?;
     conn.execute("DROP TABLE IF EXISTS stream_history", ())?;
     conn.execute(
-        "CREATE TABLE library_tracks (artist TEXT, album TEXT, track TEXT, uri TEXT)",
+        "CREATE TABLE library_tracks (artist TEXT, album TEXT, track TEXT, uri TEXT, id TEXT)",
         (),
     )?;
-    conn.execute("CREATE TABLE marquee (artist TEXT, segment TEXT)", ())?;
     conn.execute(
         "CREATE TABLE stream_history (artist TEXT, track TEXT, end_time TEXT, ms_played INTEGER)",
         (),

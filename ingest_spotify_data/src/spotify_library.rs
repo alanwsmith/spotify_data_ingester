@@ -2,7 +2,7 @@
 use serde::Deserialize;
 
 #[derive(Deserialize, Debug)]
-pub struct Library {
+pub struct SpotifyLibrary {
     pub albums: Vec<LibraryAlbum>,
     pub artists: Vec<LibraryArtist>,
     pub bannedArtists: Vec<LibraryArtist>,
