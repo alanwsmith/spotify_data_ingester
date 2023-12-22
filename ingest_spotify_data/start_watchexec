@@ -1,0 +1,6 @@
+#!/bin/bash
+
+#watchexec -r -e rs -- cd ./tests/integration_test && cargo run"
+watchexec -e rs -- ls
+
+
