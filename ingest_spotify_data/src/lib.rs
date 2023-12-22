@@ -89,4 +89,5 @@ fn make_tables(conn: &Connection) -> Result<()> {
         (),
     )?;
     Ok(())
+    //
 }

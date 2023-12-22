@@ -1,5 +1,0 @@
-#!/bin/bash
-
-cargo watch --workdir "tests/integration_test" -x run
-
-
