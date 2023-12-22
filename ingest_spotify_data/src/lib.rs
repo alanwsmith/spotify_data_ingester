@@ -1,38 +1,40 @@
+pub mod library;
 pub mod track;
 
+use crate::library::Library;
 use crate::track::Track;
 use glob::glob;
 use rusqlite::{Connection, Result};
 use std::fs;
-// use std::path::PathBuf;
 
 pub fn build_database() {
     dbg!("building database");
-    let connection = Connection::open("/Users/alan/Desktop/_sqlite_db_test.db3");
+    let connection = Connection::open("spotify_data.sqlite3");
     match connection {
         Ok(conn) => {
             make_tables(&conn).expect("Could not make tables");
-            load_stream_history(&conn).expect("Could not load stream histor");
+            load_stream_history(&conn).expect("Could not load stream history");
+            load_library_tracks(&conn).expect("Could not load library tracks");
         }
         Err(_) => (),
     };
 }
 
-fn load_stream_history(conn: &Connection) -> Result<()> {
-    for entry in glob("data/StreamingHistor*.json").expect("Failed to read glob pattern") {
+fn load_library_tracks(conn: &Connection) -> Result<()> {
+    for entry in glob("YourLibrary.json").expect("Failed to read YourLibrary glob pattern") {
         match entry {
             Ok(path) => {
                 dbg!(&path);
                 match fs::read_to_string(path) {
-                    Ok(raw) => match serde_json::from_str::<Vec<Track>>(raw.as_str()) {
+                    Ok(raw) => match serde_json::from_str::<Library>(raw.as_str()) {
                         Ok(data) => {
-                            data.into_iter().for_each(|d| {
-                    conn.execute(
-                        "INSERT INTO stream_history (artist, track, end_time, ms_played) VALUES (?1, ?2, ?3, ?4)",
-                        (d.artistName, d.trackName, d.endTime, d.msPlayed),
-                    ).ok();
-                    ()
-                });
+                            data.tracks.into_iter().for_each(|t| {
+                                conn.execute(
+                                    "INSERT INTO library_tracks (artist, album, track, uri) VALUES (?1, ?2, ?3, ?4)",
+                                    (t.artist, t.album, t.track, t.uri),
+                                ).ok();
+                                ()
+                            });
                         }
                         Err(e) => println!("{:?}", e),
                     },
@@ -42,7 +44,35 @@ fn load_stream_history(conn: &Connection) -> Result<()> {
             Err(e) => println!("{:?}", e),
         }
     }
+    Ok(())
+}
 
+fn load_stream_history(conn: &Connection) -> Result<()> {
+    for entry in
+        glob("StreamingHistor*.json").expect("Failed to read StreamingHistory glob pattern")
+    {
+        match entry {
+            Ok(path) => {
+                dbg!(&path);
+                match fs::read_to_string(path) {
+                    Ok(raw) => match serde_json::from_str::<Vec<Track>>(raw.as_str()) {
+                        Ok(data) => {
+                            data.into_iter().for_each(|d| {
+                                conn.execute(
+                                    "INSERT INTO stream_history (artist, track, end_time, ms_played) VALUES (?1, ?2, ?3, ?4)",
+                                    (d.artistName, d.trackName, d.endTime, d.msPlayed),
+                                ).ok();
+                                ()
+                            });
+                        }
+                        Err(e) => println!("{:?}", e),
+                    },
+                    Err(e) => println!("{:?}", e),
+                }
+            }
+            Err(e) => println!("{:?}", e),
+        }
+    }
     Ok(())
 }
 
